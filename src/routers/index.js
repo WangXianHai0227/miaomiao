@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import MovieRouter from './movie'
-import CinemaRouter from './cinema'
-import MineRouter from './mine'
+import movieRouter from './movie'
+import cinemaRouter from './cinema'
+import mineRouter from './mine'
 
 Vue.use(VueRouter)
 
   const routes = [
-    MovieRouter,
-    CinemaRouter,
-    MineRouter,
+    movieRouter,
+    cinemaRouter,
+    mineRouter,
     {
       path : '/*',
       redirect : '/movie'
