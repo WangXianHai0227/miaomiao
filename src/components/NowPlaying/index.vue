@@ -1,35 +1,35 @@
 <template>
     <div class="movie_body" ref="movie_body">
         <ul>
-            <li>
-                <div class="pic_show">
-                    <img src="logo.png" />
-                </div>
+            <li v-for="item in movieList" :key="item.id">
+                <div class="pic_show"><img :src="item.img | setWH('128.180')" /></div>
                 <div class="info_list">
-                    <h2>
-                        无名之辈
-                    </h2>
-                    <p>
-                        观众评分
-                        <span class="grade">
-                            9.2
-                        </span>
-                    </p>
-                    <p>主演: 人言溪</p>
-                    <p>
-                      今天55家
-                    </p>
+                    <h2>{{ item.nm }} <img v-if="item.version" src="@/assets/maxs.png" /></h2>
+                    <p>观众评分&nbsp;&nbsp;<span class="grade">{{ item.sc }}</span></p>
+                    <p>主演: {{ item.star }}</p>
+                    <p>{{ item.comingTitle }}</p>
                 </div>
-                <div class="btn_mall">
-                    购票
-                </div>
+                <div class="btn_mall">购票</div>
             </li>
         </ul>
     </div> 
 </template>
 <script>
 export default {
-    name : 'NowPlaying'
+    name : 'NowPlaying',
+    data() {
+        return {
+            movieList : []
+        }
+    },
+    mounted() {
+        this.axios.get('/api/movieOnInfoList?cityId=10').then((res)=>{
+            var msg = res.data.msg;
+            if(msg === 'ok') {
+                this.movieList = res.data.data.movieList;
+            }
+        })
+    }
 }
 </script>
 <style scoped>

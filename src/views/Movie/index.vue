@@ -4,8 +4,7 @@
         <div id="content">
             <div class="movie_menu">
                 <router-link class="city_name" tag="div" to="/movie/city">
-                    <span>大连</span
-                    ><i class="iconfont icon-lower-triangle"></i>
+                    <span>大连</span><i class="iconfont icon-lower-triangle"></i>
                 </router-link>
                 <div class="hot_swtich">
                     <router-link
